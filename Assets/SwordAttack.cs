@@ -10,22 +10,18 @@ public class SwordAttack : MonoBehaviour
 
     private void Start() {
         swordCollider = GetComponent<Collider2D>();
-        rightAttackOffset = transform.position;
+        rightAttackOffset = transform.localPosition;
     }
 
     public void AttackRight() {
         swordCollider.enabled = true;
         transform.localPosition = rightAttackOffset;
-        print("global position: " + transform.position);
-        print("local position: " + transform.localPosition);
     }
 
     // Update is called once per frame
     public void AttackLeft() {
         swordCollider.enabled = true;
         transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
-        print("global position: " + transform.position);
-        print("local position: " + transform.localPosition);
     }
 
     public void StopAttack() {
