@@ -115,9 +115,9 @@ public class PlayerController : MonoBehaviour
 
     public void SwordAttack() {
         if (spriteRenderer.flipX == true) {
-            swordAttack.AttackRight();
-        } else {
             swordAttack.AttackLeft();
+        } else {
+            swordAttack.AttackRight();
         }
     }
 
