@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Animator animator;
+    private float health = 1f;
+    private float animationTime;
+    public float animationEndDelay = 0f;
 
     public float Health {
         set {
@@ -17,8 +21,18 @@ public class Enemy : MonoBehaviour
             return health;
         }
     }
-    public float health = 1;
+
+    private void Start() {
+        animator = GetComponent<Animator>();
+    }
+
     public void Defeated() {
-        Destroy(gameObject);
+        animator.SetTrigger("isDefeated");
+        RemoveEnemy();
+    }
+    public void RemoveEnemy() {
+        animationTime = animator.GetCurrentAnimatorStateInfo(0).length + animationEndDelay;
+        print(animationTime);
+        Destroy(gameObject, animationTime);
     }
 }
